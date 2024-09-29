@@ -5,7 +5,6 @@ import Atach from '../assets/icons/paperclip-solid.svg?react';
 import More from '../assets/icons/ellipsis-vertical-solid.svg?react';
 import Mic from '../assets/icons/microphone-solid.svg?react';
 import { useSpeechRecognition } from '../hooks/useSpeechRecognition';
-import { send } from 'vite';
 
 export interface InputContainerProps {
   sendMessage: (message: string) => void;
@@ -55,6 +54,17 @@ const InputContainer: React.FC<InputContainerProps> = ({ sendMessage }) => {
   const handleSendMessage = (message: string) => {
     sendMessage(message);
     setMessage('');
+    const element = ref.current;
+    if (element) {
+      element.style.height = '5px';
+    }
+  };
+
+  const onEnter = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(message);
+    }
   };
 
   return (
@@ -78,6 +88,7 @@ const InputContainer: React.FC<InputContainerProps> = ({ sendMessage }) => {
         rows={1}
         ref={ref}
         value={message}
+        onKeyUp={onEnter}
       />
       <div className="input-container__more">
         <button className="input-container__button">
