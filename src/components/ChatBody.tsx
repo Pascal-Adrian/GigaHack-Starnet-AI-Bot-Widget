@@ -25,9 +25,11 @@ const ChatBody: React.FC<ChatBodyProps> = ({
         <p>{senderName}</p>
       </div>
       <div className="chat-body__messages">
-        {messages.map((message, index) => (
-          <ChatBubbleGroup key={index} {...message} />
-        ))}
+        <div className="chat-body__messages-content">
+          {messages.map((message, index) => (
+            <ChatBubbleGroup key={index} {...message} />
+          ))}
+        </div>
       </div>
       <InputContainer sendMessage={handleSendMessage} />
     </aside>
