@@ -11,7 +11,7 @@ function App() {
         alt=""
         style={{ height: '100%', width: '100%' }}
       />
-      <ChatWidget apiUrl="https://496e-195-22-251-5.ngrok-free.app" />
+      <ChatWidget apiUrl="https://2c5c-188-138-239-27.ngrok-free.app" />
     </main>
   );
 }
